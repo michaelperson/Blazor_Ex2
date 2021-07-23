@@ -1,0 +1,27 @@
+﻿@inherits SampleFormBase
+
+@if (!String.IsNullOrEmpty(Error))
+{
+    <div class="alert alert-danger">@Error</div>
+}
+@if (!Success)
+{
+<EditForm Model="Contact"
+          OnValidSubmit="ValideForm" OnInvalidSubmit="InvalideForm">
+    <!--OnSubmit="SubmitForm">-->
+    <DataAnnotationsValidator />
+    Nom : <InputText @bind-Value="Contact.Nom" /><br />
+    Email : <InputText @bind-Value="Contact.Email" /><br />
+    Telephone : <InputText @bind-Value="Contact.Telephone" /><br />
+    Message : <InputTextArea @bind-Value="Contact.Message" /><br />
+     Votre couleur préférée : <InputColor @bind-Value="Contact.Couleur"></InputColor>
+    <br />
+    <button type="submit">Envoyer</button>
+    <ValidationSummary />
+</EditForm>
+}
+else
+{
+   <div class="alert alert-success">SUCCESS</div>
+}
+
